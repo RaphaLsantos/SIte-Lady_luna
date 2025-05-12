@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/dashboard/dash.css">
+  <link rel="icon" type="image/png" href="../img/loginCadastro/logo.png">
+  <title>Lady Luna | Dashboard</title>
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../img/loginCadastro/logo.png" alt="Logo">
+        </a>
+      </div>
+
+      <nav class="menu">
+        <a class="active" href="#" title="Dashboard">🏠</a>
+        <a href="../Telas/fichaTecnica.html" title="Fichas Técnicas">📋</a>
+        <a href="#" title="Materiais">🧂</a>
+        <a href="#" title="Receitas">📖</a>
+        <a href="#" title="Financeiro">💰</a>
+        <a href="#" title="Estoque">📦</a>
+      </nav>
+
+      <div class="profile">
+        <img src="https://via.placeholder.com/40" alt="Karol">
+        <p>Karol</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="header">
+        <h1>Financeiro</h1>
+        <button class="new-btn">+ Nova Transação</button>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Receita</h3>
+          <p>R$ 12.000,00</p>
+        </div>
+        <div class="card">
+          <h3>Despesa</h3>
+          <p class="danger">–R$ 4.500,00</p>
+        </div>
+      </div>
+
+      <div class="transactions">
+        <h2>Transações</h2>
+        <table>
+          <tr>
+            <th>Data</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+          </tr>
+          <tr>
+            <td>21/04/2024</td>
+            <td>Venda</td>
+            <td>R$ 3.000,00</td>
+          </tr>
+          <tr>
+            <td>19/04/2024</td>
+            <td>Compra de ingredientes</td>
+            <td class="danger">–R$ 1.500,00</td>
+          </tr>
+          <tr>
+            <td>15/04/2024</td>
+            <td>Assinatura mensal</td>
+            <td class="danger">–R$ 200,00</td>
+          </tr>
+          <tr>
+            <td>10/04/2024</td>
+            <td>Venda</td>
+            <td>R$ 6.000,00</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="chart">
+        <h2>Produtos Mais Vendidos e Menos Vendidos</h2>
+        <canvas id="barChart"></canvas>
+      </div>
+    </main>
+  </div>
+
+
+  <div class="modal" id="transactionModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2>Nova Transação</h2>
+      <form id="transactionForm">
+        <label for="description">Descrição:</label>
+        <input type="text" id="description" name="description" required>
+
+        <label for="amount">Valor (use "-" para despesa):</label>
+        <input type="number" id="amount" name="amount" required>
+
+        <label for="date">Data:</label>
+        <input type="date" id="date" name="date" required>
+
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/dashboard/js.js"></script>
+</body>
+
+</html>

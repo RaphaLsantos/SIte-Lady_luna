@@ -1,0 +1,207 @@
+/* Reset e fonte */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Paleta baseada na logo Lady Luna */
+:root {
+  --primary: #f4b6ab;      /* rosa claro */
+  --secondary: #ffece2;    /* creme rosado */
+  --text-dark: #5a3e36;    /* marrom rosado escuro */
+  --bg-light: #fff8f5;     /* quase branco rosado */
+  --bg-card: #fce3d8;      /* rosa pêssego suave */
+  --highlight: #ffcab5;    /* coral pálido */
+}
+
+body {
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 100px;
+  background-color: var(--bg-card);
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0 20px 20px 0;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 30px;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.menu a {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  text-decoration: none;
+  color: var(--text-dark);
+  background-color: var(--secondary);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover,
+.menu a.active {
+  background-color: var(--highlight);
+  transform: scale(1.1);
+}
+
+.profile {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.profile img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.profile p {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-dark);
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  background-color: var(--bg-light);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--primary);
+}
+
+.new-btn {
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.new-btn:hover {
+  background: var(--highlight);
+}
+
+.form-section {
+  background: var(--secondary);
+  margin: 30px 0;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2 {
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+.form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  background-color: #fff;
+  color: var(--text-dark);
+}
+
+.row input {
+  flex: 1;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--text-dark);
+  transition: transform 0.3s ease, opacity 0.5s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card .icon {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+/* Mostrar/ocultar formulário */
+.form-section {
+  display: none;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.3s ease;
+}
+
+.form-section.show {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}

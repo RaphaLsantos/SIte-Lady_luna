@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Receitas</title>
+    <link rel="stylesheet" href="../css/receitas/receitas.css">
+    <link rel="icon" type="image/png" href="../img/loginCadastro/logo.png">
+</head>
+
+<body>
+    <div class="container">
+
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../img/loginCadastro/logo.png" alt="Logo">
+                </a>
+            </div>
+
+            <nav class="menu">
+                <a href="../Telas/dashboard.html" title="Dashboard">🏠</a>
+                <a href="../Telas/fichaTecnica.html" title="Fichas Técnicas">📋</a>
+                <a href="#" title="Materiais">🧂</a>
+                <a class="active" title="Receitas">📖</a>
+                <a href="#" title="Financeiro">💰</a>
+                <a href="#" title="Estoque">📦</a>
+            </nav>
+
+            <div class="profile">
+                <img src="https://via.placeholder.com/40" alt="Karol">
+                <p>Karol</p>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="header">
+                <h1>Receitas <span id="counter">(2)</span></h1>
+                <input type="text" id="searchInput" placeholder="🔍 Pesquisar por receitas" />
+                <div class="actions">
+                    <button id="addRecipeBtn">➕</button>
+                </div>
+            </header>
+
+            <section class="cards" id="cardsContainer"></section>
+        </main>
+    </div>
+
+    <!-- Modal Detalhes -->
+    <div class="modal" id="detailsModal">
+        <div class="modal-content">
+            <h2>Detalhes da Receita</h2>
+            <p id="detailsText"></p>
+            <button onclick="closeModal('detailsModal')">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Modal Adicionar Receita -->
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <h2>Adicionar Receita</h2>
+            <input type="text" id="newName" placeholder="Nome da Receita" />
+            <textarea id="newIngredients" placeholder="Ingredientes..."></textarea>
+            <button onclick="addRecipe()">Adicionar</button>
+            <button onclick="closeModal('addModal')">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Modal Excluir Receita -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <h2>Confirmar Exclusão</h2>
+            <p>Tem certeza que deseja excluir esta receita?</p>
+            <button id="confirmDeleteBtn">Sim</button>
+            <button onclick="closeModal('deleteModal')">Cancelar</button>
+        </div>
+    </div>
+
+
+    <script src="../js/receitas/receitas.js"></script>
+</body>
+
+</html>

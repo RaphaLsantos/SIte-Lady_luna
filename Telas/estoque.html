@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Estoque</title>
+    <link rel="stylesheet" href="../css/estoque/estoque.css">
+    <link rel="icon" type="image/png" href="../img/loginCadastro/logo.png">
+</head>
+
+<body>
+    <div class="container">
+
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../img/loginCadastro/logo.png" alt="Logo">
+                </a>
+            </div>
+
+            <nav class="menu">
+                <a href="../Telas/dashboard.html" title="Dashboard">🏠</a>
+                <a href="../Telas/fichaTecnica.html" title="Fichas Técnicas">📋</a>
+                <a href="../Telas/materiais.html" title="Materiais">🧂</a>
+                <a href="../Telas/receitas.html" title="Receitas">📖</a>
+                <a href="#" title="Financeiro">💰</a>
+                <a class="active" href="../Telas/estoque.html" title="Estoque">📦</a>
+            </nav>
+
+            <a href="../Telas/perfil.html" class="profile-link">
+                <div class="profile">
+                    <img src="https://via.placeholder.com/40" alt="Karol">
+                    <p>Karol</p>
+                </div>
+            </a>
+        </aside>
+
+        <main class="content">
+            <header class="header">
+                <h1>Estoque</h1>
+            </header>
+
+
+            <h1>Controle de Estoque</h1>
+            <div id="loading">Carregando estoque...</div>
+            <table id="tabela-estoque">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Item</th>
+                        <th>Categoria</th>
+                        <th>Quantidade</th>
+                        <th>Valor Unitário</th>
+                        <th>Valor Total</th>
+                        <th>Data Validade</th>
+                        <th>Fornecedor</th>
+                        <th>Local</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="corpo-tabela">
+                    <!-- Os itens serão inseridos aqui pelo JavaScript -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <script src="../js/estoque/estoque.js"></script>
+</body>
+
+</html>

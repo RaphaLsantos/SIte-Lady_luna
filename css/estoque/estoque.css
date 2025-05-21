@@ -1,10 +1,50 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-family: Arial, sans-serif;
+}
+
+
+th {
+    background-color: #FFFDF4;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f0f0f0;
+}
+
+td:nth-child(3) {
+    text-align: right;
+}
+
+/* Paleta baseada na logo Lady Luna */
 :root {
-    --highlight: #FAD9C6;
-    --background: #FFF8F5;
-    --text-dark: #3b3b3b;
-    --secondary: #F2B89F;
-    --bg-light: #FFF8F5;
-    --bg-card: #FFE7DB;
+    --primary: #f4b6ab;
+    /* rosa claro */
+    --secondary: #ffece2;
+    /* creme rosado */
+    --text-dark: #5a3e36;
+    /* marrom rosado escuro */
+    --bg-light: #fff8f5;
+    /* quase branco rosado */
+    --bg-card: #fce3d8;
+    /* rosa pêssego suave */
+    --highlight: #ffcab5;
+    /* coral pálido */
 }
 
 * {
@@ -30,6 +70,7 @@ body {
     padding: 10px 5px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 0 20px 20px 0;
@@ -65,24 +106,22 @@ body {
     font-size: 22px;
     text-decoration: none;
     color: var(--text-dark);
-    background-color: var(--bg-card);
+    background-color: var(--secondary);
     border-radius: 12px;
     transition: all 0.3s ease;
 }
 
 .menu a:hover,
 .menu a.active {
-    cursor: pointer;
-    background-color: var(--secondary);
+    background-color: var(--highlight);
     transform: scale(1.1);
 }
 
 .profile {
-  text-align: center;
-  margin-top: 30px;
-  cursor: pointer;
+    text-align: center;
+    margin-top: 30px;
+    cursor: pointer;
 }
-
 
 .profile img {
     border-radius: 50%;

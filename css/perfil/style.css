@@ -1,0 +1,240 @@
+:root {
+    --highlight: #FAD9C6;
+    --background: #FFF8F5;
+    --text-dark: #3b3b3b;
+    --secondary: #F2B89F;
+    --bg-light: #FFF8F5;
+    --bg-card: #FFE7DB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+.sidebar {
+    width: 100px;
+    background-color: var(--bg-card);
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0 20px 20px 0;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.menu a {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    text-decoration: none;
+    color: var(--text-dark);
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.menu a:hover,
+.menu a.active {
+    cursor: pointer;
+    background-color: var(--secondary);
+    transform: scale(1.1);
+}
+
+.profile {
+    text-align: center;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+
+.profile img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.profile p {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--text-dark);
+}
+
+.main {
+    flex: 1;
+    padding: 40px;
+}
+
+.main h2 {
+    color: #784b00;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.profile-picture {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture img {
+    width: 100px;
+    height: 100px;
+    /* Adicione esta linha */
+    border-radius: 50%;
+    border: 3px solid #d68a00;
+    object-fit: cover;
+    /* Garante que a imagem preencha o círculo corretamente */
+}
+
+.edit-icon {
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+    color: #d68a00;
+}
+
+.styled-form {
+    background: #fff8e6;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(120, 75, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #784b00;
+    font-size: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ecd5a4;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: border 0.3s ease;
+}
+
+input:focus {
+    border-color: #d68a00;
+    outline: none;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #d68a00;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #c27a00;
+}
+
+button.secondary {
+    background-color: #ffe0b2;
+    color: #784b00;
+}
+
+button.secondary:hover {
+    background-color: #ffd59b;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff8e6;
+    margin: 8% auto;
+    padding: 30px;
+    border: 2px solid #d68a00;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(120, 75, 0, 0.2);
+}
+
+.modal-content h3 {
+    color: #784b00;
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.close {
+    color: #d68a00;
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 28px;
+    cursor: pointer;
+}

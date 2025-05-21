@@ -86,9 +86,11 @@ body {
 }
 
 .profile {
-    text-align: center;
-    margin-top: 30px;
+  text-align: center;
+  margin-top: 30px;
+  cursor: pointer;
 }
+
 
 .profile img {
     border-radius: 50%;
@@ -277,3 +279,9 @@ td.danger {
 }
 
 /*modal final*/
+
+
+.profile-link {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Lady Luna</title>
+    <link rel="stylesheet" href="../css/perfil/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../img/loginCadastro/logo.png" alt="Logo">
+                </a>
+            </div>
+
+            <nav class="menu">
+                <a href="../Telas/dashboard.html" title="Dashboard">🏠</a>
+                <a href="../Telas/fichaTecnica.html" title="Fichas Técnicas">📋</a>
+                <a href="../Telas/materiais.html" title="Materiais">🧂</a>
+                <a href="../Telas/receitas.html" title="Receitas">📖</a>
+                <a href="#" title="Financeiro">💰</a>
+                <a href="../Telas/estoque.html" title="Estoque">📦</a>
+            </nav>
+
+            <a href="../img/loginCadastro/logo.png" class="profile-link">
+                <div class="profile">
+                    <img src="https://via.placeholder.com/40" alt="Karol">
+                    <p>Karol</p>
+                </div>
+            </a>
+        </aside>
+
+        <div class="main">
+            <h2>Perfil</h2>
+            <div class="profile-picture">
+                <img id="profile-img" src="https://i.imgur.com/QB0nRZw.png" alt="Foto de perfil">
+                <div class="edit-icon" onclick="document.getElementById('photo-input').click()">
+                    ✎ Alterar Foto
+                </div>
+                <input type="file" id="photo-input" accept="image/*" style="display: none;"
+                    onchange="changePhoto(event)">
+            </div>
+
+            <form class="styled-form" onsubmit="event.preventDefault(); alert('Dados salvos com sucesso!')">
+                <div class="form-group">
+                    <label for="nome">👤 Nome</label>
+                    <input type="text" id="nome" value="Karol Souza" placeholder="Digite seu nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label for="numero">📞 Número</label>
+                    <input type="text" id="numero" value="(11) 98765-4321" placeholder="(00) 00000-0000">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">✉️ E-mail</label>
+                    <input type="email" id="email" value="karol@email.com" placeholder="email@exemplo.com">
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="secondary" onclick="openPasswordModal()">🔒 Alterar Senha</button>
+                    <button type="submit">💾 Salvar</button>
+                </div>
+            </form>
+
+            <!-- Modal de alteração de senha -->
+            <div id="passwordModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closePasswordModal()">&times;</span>
+                    <h3>Alterar Senha</h3>
+                    <form
+                        onsubmit="event.preventDefault(); alert('Senha alterada com sucesso!'); closePasswordModal();">
+                        <div class="form-group">
+                            <label for="current-password">🔑 Senha Atual</label>
+                            <input type="password" id="current-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">🆕 Nova Senha</label>
+                            <input type="password" id="new-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">✅ Confirmar Nova Senha</label>
+                            <input type="password" id="confirm-password" required>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="submit">💾 Salvar</button>
+                            <button type="button" class="secondary" onclick="closePasswordModal()">❌ Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../js/perfil/js.js"></script>
+</body>
+
+
+</html>

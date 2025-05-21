@@ -46,40 +46,55 @@
 
             <section class="cards" id="cardsContainer"></section>
         </main>
-    </div>
 
-    <!-- Modal Detalhes -->
-    <div class="modal" id="detailsModal">
-        <div class="modal-content">
-            <h2>Detalhes da Receita</h2>
-            <p id="detailsText"></p>
-            <button onclick="closeModal('detailsModal')">Fechar</button>
+        <!-- Modal Detalhes -->
+        <div class="modal" id="detailsModal">
+            <div class="modal-content">
+                <h2>Detalhes da Receita</h2>
+                <img id="detailsImage" src="" alt="Imagem da Receita"
+                    style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+                <p id="detailsText"></p>
+                <button onclick="closeModal('detailsModal')">Fechar</button>
+            </div>
         </div>
-    </div>
 
-    <!-- Modal Adicionar Receita -->
-    <div class="modal" id="addModal">
-        <div class="modal-content">
-            <h2>Adicionar Receita</h2>
-            <input type="text" id="newName" placeholder="Nome da Receita" />
-            <textarea id="newIngredients" placeholder="Ingredientes..."></textarea>
-            <button onclick="addRecipe()">Adicionar</button>
-            <button onclick="closeModal('addModal')">Cancelar</button>
+        <!-- Modal Adicionar Receita -->
+        <div class="modal" id="addModal">
+            <div class="modal-content">
+                <h2>Adicionar Receita</h2>
+                <input type="text" id="newName" placeholder="Nome da Receita" />
+                <textarea id="newIngredients" placeholder="Ingredientes..."></textarea>
+                <input type="file" id="newImage" accept="image/*" />
+                <button onclick="addRecipe()">Adicionar</button>
+                <button onclick="closeModal('addModal')">Cancelar</button>
+            </div>
         </div>
-    </div>
 
-    <!-- Modal Excluir Receita -->
-    <div class="modal" id="deleteModal">
-        <div class="modal-content">
-            <h2>Confirmar Exclusão</h2>
-            <p>Tem certeza que deseja excluir esta receita?</p>
-            <button id="confirmDeleteBtn">Sim</button>
-            <button onclick="closeModal('deleteModal')">Cancelar</button>
+        <!-- Modal Editar Receita -->
+        <div class="modal" id="editModal">
+            <div class="modal-content">
+                <h2>Editar Receita</h2>
+                <input type="text" id="editName" placeholder="Nome da Receita" />
+                <textarea id="editIngredients" placeholder="Ingredientes..."></textarea>
+                <input type="file" id="editImage" accept="image/*" />
+                <button onclick="saveEditRecipe()">Salvar</button>
+                <button onclick="closeModal('editModal')">Cancelar</button>
+            </div>
         </div>
-    </div>
+
+        <!-- Modal Excluir Receita -->
+        <div class="modal" id="deleteModal">
+            <div class="modal-content">
+                <h2>Confirmar Exclusão</h2>
+                <p>Tem certeza que deseja excluir esta receita?</p>
+                <button id="confirmDeleteBtn">Sim</button>
+                <button onclick="closeModal('deleteModal')">Cancelar</button>
+            </div>
+        </div>
 
 
-    <script src="../js/receitas/receitas.js"></script>
+
+        <script src="../js/receitas/receitas.js"></script>
 </body>
 
 </html>

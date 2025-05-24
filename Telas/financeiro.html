@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/Financeiro/style.css">
+  <title>Financeiro - Lady Luna</title>
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../img/loginCadastro/logo.png" alt="Logo">
+        </a>
+      </div>
+
+      <nav class="menu">
+        <a href="#" title="Dashboard">🏠</a>
+        <a href="../Telas/fichaTecnica.html" title="Fichas Técnicas">📋</a>
+        <a href="../Telas/materiais.html" title="Materiais">🧂</a>
+        <a href="../Telas/receitas.html" title="Receitas">📖</a>
+        <a class="active" href="../Telas/financeiro.html" title="Financeiro">💰</a>
+        <a href="../Telas/estoque.html" title="Estoque">📦</a>
+      </nav>
+
+      <a href="../Telas/perfil.html" class="profile-link">
+        <div class="profile">
+          <img src="https://via.placeholder.com/40" alt="Karol">
+          <p>Karol</p>
+        </div>
+      </a>
+
+    </aside>
+
+    <div class="content">
+      <div class="top-bar">
+        <h1>Financeiro</h1>
+        <button class="new-transaction" onclick="toggleForm()">+ Nova Transação</button>
+      </div>
+
+      <form id="transaction-form">
+        <div class="form-row">
+          <input type="date" id="data" required />
+          <input type="text" id="descricao" placeholder="Descrição" required />
+          <input type="number" id="valor" placeholder="Valor (use negativo para despesa)" required />
+        </div>
+        <button type="button" onclick="adicionarTransacao()">Adicionar</button>
+      </form>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Receita</div>
+          <div class="card-value" id="receita">R$ 12.000,00</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Despesa</div>
+          <div class="card-value negative" id="despesa">-R$ 4.500,00</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Saldo</div>
+          <div class="card-value" id="saldo">R$ 7.500,00</div>
+        </div>
+      </div>
+
+      <div class="transactions">
+        <h2>Transações</h2>
+        <table id="tabela-transacoes">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Descrição</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>21/04/2024</td>
+              <td>Venda</td>
+              <td>R$ 3.000,00</td>
+            </tr>
+            <tr>
+              <td>19/04/2024</td>
+              <td>Compra de ingredientes</td>
+              <td class="negative">-R$ 1.500,00</td>
+            </tr>
+            <tr>
+              <td>15/04/2024</td>
+              <td>Assinatura mensal</td>
+              <td class="negative">-R$ 200,00</td>
+            </tr>
+            <tr>
+              <td>10/04/2024</td>
+              <td>Venda</td>
+              <td>R$ 4.000,00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../js/Financeiro/js.js"></script>
+</body>
+
+</html>

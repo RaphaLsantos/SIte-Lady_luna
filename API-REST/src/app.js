@@ -9,6 +9,8 @@ app.use(cors())
 // Indica para o express ler JSON no body
 app.use(express.json())
 
+app.use(express.urlencoded())
+
 // Usar o Router
 app.use(routes)
 

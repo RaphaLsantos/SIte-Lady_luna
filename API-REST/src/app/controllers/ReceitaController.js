@@ -27,6 +27,17 @@ class ReceitaController {
         const row = await ReceitaRepository.deleteById(id)
         res.json(row)
     }
+    async showItemReceita(req, res) {
+        const id = req.params.id
+        const row = await ReceitaRepository.mostraItemReceita(id)
+        res.json(row)
+    }
+    async buscaReceitaPorNome(req, res) {
+        const nome = req.params.nome
+        const row = await ReceitaRepository.buscaReceitaPorNome(nome)
+        res.json(row)
+    }
+    
 }
 
 export default new ReceitaController()

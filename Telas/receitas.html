@@ -9,8 +9,7 @@
 </head>
 
 <body>
-    <div class="container">
-
+     <div class="container">
         <aside class="sidebar">
             <div class="logo">
                 <a href="../index.html">
@@ -22,7 +21,7 @@
                 <a href="../Telas/dashboard.html" title="Dashboard">🏠</a>
                 <a href="../Telas/fichaTecnica.html" title="Fichas Técnicas">📋</a>
                 <a href="../Telas/materiais.html" title="Materiais">🧂</a>
-                <a class="active" href="../Telas/receitas.html" title="Receitas">📖</a>
+                <a href="receitas.html" title="Receitas">📖</a>
                 <a href="../Telas/financeiro.html" title="Financeiro">💰</a>
                 <a href="../Telas/estoque.html" title="Estoque">📦</a>
             </nav>
@@ -35,66 +34,128 @@
             </a>
         </aside>
 
-        <main class="content">
-            <header class="header">
-                <h1>Receitas <span id="counter">(2)</span></h1>
-                <input type="text" id="searchInput" placeholder="🔍 Pesquisar por receitas" />
-                <div class="actions">
-                    <button id="addRecipeBtn">➕</button>
-                </div>
+        <main>
+            <header>
+                <h1>Nossas Receitas</h1>
+                <form>
+                    <input type="search" id="searchInput" aria-label="Buscar receitas" placeholder="Buscar receitas..." />
+                    <button id="searchButton" type="submit">Buscar</button>
+                </form>
             </header>
-
-            <section class="cards" id="cardsContainer"></section>
+            
+            <div id="receitas-container" class="receitas-grid">
+                <!-- Os cards serão inseridos aqui pelo JavaScript -->
+            </div>
         </main>
+    </div>
 
-        <!-- Modal Detalhes -->
-        <div class="modal" id="detailsModal">
-            <div class="modal-content">
-                <h2>Detalhes da Receita</h2>
-                <img id="detailsImage" src="" alt="Imagem da Receita"
-                    style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
-                <p id="detailsText"></p>
-                <button onclick="closeModal('detailsModal')">Fechar</button>
+    <!-- Modal para exibir ingredientes -->
+    <div id="modal-ingredientes" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-titulo"></h2>
+            <div class="modal-body">
+                <h3>Ingredientes</h3>
+                <ul id="modal-ingredientes-lista"></ul>
+                <h3>Modo de Preparo</h3>
+                <p id="modal-preparo"></p>
+                
+                <div class="modal-actions">
+                    <button id="btn-editar" class="btn-action">✏️ Editar</button>
+                    <button id="btn-excluir" class="btn-action btn-danger">🗑️ Excluir</button>
+                    <button id="btn-produzir" class="btn-action btn-primary">🍳 Produzir</button>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- Modal Adicionar Receita -->
-        <div class="modal" id="addModal">
-            <div class="modal-content">
-                <h2>Adicionar Receita</h2>
-                <input type="text" id="newName" placeholder="Nome da Receita" />
-                <textarea id="newIngredients" placeholder="Ingredientes..."></textarea>
-                <input type="file" id="newImage" accept="image/*" />
-                <button onclick="addRecipe()">Adicionar</button>
-                <button onclick="closeModal('addModal')">Cancelar</button>
+ <div id="receitaModal" class="receitaModal">
+        <div class="receitaModal-content">
+            <div class="receitaModal-header">
+                <h2>Nova Receita</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="receitaModal-body">
+                <form id="formReceita">
+                    <div class="form-group">
+                        <label for="nomeReceita">Nome da Receita</label>
+                        <input type="text" class="form-control" id="nomeReceita" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricaoReceita">Descrição</label>
+                        <textarea class="form-control" id="descricaoReceita" rows="3"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="tempoPreparo">Tempo de Preparo (minutos)</label>
+                            <input type="number" class="form-control" id="tempoPreparo" min="1" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="porcoes">Rendimento (porções)</label>
+                            <input type="number" class="form-control" id="porcoes" min="1" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoriaReceita">Categoria</label>
+                        <select class="form-control" id="categoriaReceita" required>
+                            <option value="" selected disabled>Selecione...</option>
+                            <option value="bolos">Bolos</option>
+                            <option value="doces">Doces</option>
+                            <option value="salgados">Salgados</option>
+                            <option value="bebidas">Bebidas</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                </form>
+
+                <!-- Seção de Ingredientes -->
+                <div style="margin-top: 20px;">
+                    <h3>Ingredientes</h3>
+                    <div id="ingredientesContainer">
+                        <!-- Campos de ingredientes serão adicionados aqui -->
+                    </div>
+                    <button type="button" class="btn btn-outline-primary" id="adicionarIngrediente">
+                        Adicionar Ingrediente
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelarReceita">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="salvarReceita">Salvar Receita</button>
             </div>
         </div>
+    </div>
 
-        <!-- Modal Editar Receita -->
-        <div class="modal" id="editModal">
-            <div class="modal-content">
-                <h2>Editar Receita</h2>
-                <input type="text" id="editName" placeholder="Nome da Receita" />
-                <textarea id="editIngredients" placeholder="Ingredientes..."></textarea>
-                <input type="file" id="editImage" accept="image/*" />
-                <button onclick="saveEditRecipe()">Salvar</button>
-                <button onclick="closeModal('editModal')">Cancelar</button>
+    <!-- Template para linha de ingrediente -->
+    <template id="ingredienteTemplate">
+        <div class="ingrediente-item">
+            <div class="row">
+                <div class="col-md-5 form-group">
+                    <label>Item do Estoque</label>
+                    <select class="form-control ingrediente-select" required>
+                        <option value="" selected disabled>Selecione um item</option>
+                    </select>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label>Quantidade</label>
+                    <input type="number" step="0.001" class="form-control quantidade" min="0.001" required>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label>Observações</label>
+                    <input type="text" class="form-control observacoes">
+                </div>
+                <div class="col-md-1 d-flex align-items-end">
+                    <button type="button" class="btn btn-outline-danger remover-ingrediente">
+                        Remover
+                    </button>
+                </div>
             </div>
         </div>
+    </template>
 
-        <!-- Modal Excluir Receita -->
-        <div class="modal" id="deleteModal">
-            <div class="modal-content">
-                <h2>Confirmar Exclusão</h2>
-                <p>Tem certeza que deseja excluir esta receita?</p>
-                <button id="confirmDeleteBtn">Sim</button>
-                <button onclick="closeModal('deleteModal')">Cancelar</button>
-            </div>
-        </div>
+<button id="btn-adicionar" class="btn-add-receita">+</button>
 
-
-
-        <script src="../js/receitas/receitas.js"></script>
+<script src="../js/receitas/receitas.js"></script>
 </body>
 
 </html>

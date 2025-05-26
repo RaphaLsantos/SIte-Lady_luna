@@ -110,3 +110,120 @@ async function carregarTabelaEstoque() {
 
 // Carrega a tabela quando a página é carregada
 document.addEventListener('DOMContentLoaded', carregarTabelaEstoque);
+
+
+
+// Abrir modal
+document.getElementById('openModalBtn').addEventListener('click', function() {
+    document.getElementById('modalForm').style.display = 'flex';
+});
+
+// Fechar modal ao clicar no ×
+document.querySelector('.close').addEventListener('click', function() {
+    document.getElementById('modalForm').style.display = 'none';
+});
+
+// Fechar modal ao clicar fora do conteúdo
+document.getElementById('modalForm').addEventListener('click', function(e) {
+    if (e.target === this) {
+        document.getElementById('modalForm').style.display = 'none';
+    }
+});
+
+// Enviar formulário
+document.getElementById('itemForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Validar campos obrigatórios antes de enviar
+    if (!validateForm()) {
+        return;
+    }
+
+    // Coletar todos os dados do formulário
+    const formData = {
+        nome_item: document.getElementById('nome_item').value,
+        categoria: document.getElementById('categoria').value,
+        quantidade: parseFloat(document.getElementById('quantidade').value),
+        unidade_medida: document.getElementById('unidade_medida').value,
+        valor_unitario: parseFloat(document.getElementById('valor_unitario').value),
+        data_validade: document.getElementById('data_validade').value || null,
+        fornecedor: document.getElementById('fornecedor').value || null,
+        local_armazenamento: document.getElementById('local_armazenamento').value || null,
+        minimo_estoque: document.getElementById('minimo_estoque').value ? parseFloat(document.getElementById('minimo_estoque').value) : null,
+        ativo: document.getElementById('ativo').value === '1',
+        observacoes: document.getElementById('observacoes').value || null
+    };
+
+    try {
+        const response = await fetch('http://localhost:8081/estoque', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+        
+        if (!response.ok) {
+            throw new Error('Erro na resposta do servidor');
+        }
+        
+        const data = await response.json();
+        console.log('Sucesso:', data);
+        alert('Item cadastrado com sucesso!');
+        document.getElementById('modalForm').style.display = 'none';
+        document.getElementById('itemForm').reset();
+        
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao cadastrar item: ' + error.message);
+    }
+});
+
+// Função para validar os campos obrigatórios
+function validateForm() {
+    let isValid = true;
+    
+    // Validar nome do item
+    if (!document.getElementById('nome_item').value.trim()) {
+        document.getElementById('nome_item_error').style.display = 'block';
+        isValid = false;
+    } else {
+        document.getElementById('nome_item_error').style.display = 'none';
+    }
+    
+    // Validar categoria
+    if (!document.getElementById('categoria').value) {
+        document.getElementById('categoria_error').style.display = 'block';
+        isValid = false;
+    } else {
+        document.getElementById('categoria_error').style.display = 'none';
+    }
+    
+    // Validar quantidade
+    if (!document.getElementById('quantidade').value || 
+        parseFloat(document.getElementById('quantidade').value) <= 0) {
+        document.getElementById('quantidade_error').style.display = 'block';
+        isValid = false;
+    } else {
+        document.getElementById('quantidade_error').style.display = 'none';
+    }
+    
+    // Validar unidade de medida
+    if (!document.getElementById('unidade_medida').value) {
+        document.getElementById('unidade_medida_error').style.display = 'block';
+        isValid = false;
+    } else {
+        document.getElementById('unidade_medida_error').style.display = 'none';
+    }
+    
+    // Validar valor unitário
+    if (!document.getElementById('valor_unitario').value || 
+        parseFloat(document.getElementById('valor_unitario').value) <= 0) {
+        document.getElementById('valor_unitario_error').style.display = 'block';
+        isValid = false;
+    } else {
+        document.getElementById('valor_unitario_error').style.display = 'none';
+    }
+    
+    return isValid;
+}

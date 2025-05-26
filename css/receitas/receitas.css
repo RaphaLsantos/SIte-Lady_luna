@@ -1,218 +1,590 @@
 :root {
-    --highlight: #FAD9C6;
-    --background: #FFF8F5;
-    --text-dark: #3b3b3b;
-    --secondary: #F2B89F;
-    --bg-light: #FFF8F5;
-    --bg-card: #FFE7DB;
-}
+            --highlight: #FAD9C6;
+            --background: #FFF8F5;
+            --text-dark: #3b3b3b;
+            --secondary: #F2B89F;
+            --bg-light: #FFF8F5;
+            --bg-card: #FFE7DB;
+            --primary: #4CAF50;
+            --danger: #f44336;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-body {
-    background: var(--bg-light);
-    color: var(--text-dark);
-}
+        body {
+            background-color: #f9f5f0;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
 
-.container {
-    display: flex;
-    min-height: 100vh;
-}
+        .container {
+            display: flex;
+            width: 100%;
+        }
 
-.sidebar {
-    width: 100px;
-    background-color: var(--bg-card);
-    padding: 10px 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 0 20px 20px 0;
-}
+        .sidebar {
+            width: 100px;
+            background-color: var(--bg-card);
+            padding: 10px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 0 20px 20px 0;
+        }
 
-.logo {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 30px;
-}
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 30px;
+        }
 
-.logo img {
+        .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .menu a {
+            width: 100%;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            text-decoration: none;
+            color: var(--text-dark);
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            cursor: pointer;
+            background-color: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        .profile {
+            text-align: center;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .profile p {
+            margin-top: 6px;
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        main {
+            flex: 1;
+            padding: 30px;
+            position: relative;
+        }
+
+        header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            color: #F2B89F;
+            padding: 6px;
+            text-align: left;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        header input[type="search"] {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+        header button {
+            padding: 8px 16px;
+            font-size: 16px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 8px;
+            background-color: var(--secondary);
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        header button:hover {
+            background-color: #0056b3;
+        }
+
+        .receitas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .card-receita {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card-receita:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-imagem {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-conteudo {
+            padding: 20px;
+        }
+
+        .card-titulo {
+            margin: 0 0 10px 0;
+            color: #8b4513;
+        }
+
+        .card-descricao {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .card-tempo,
+        .card-porcoes {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-categoria {
+            display: inline-block;
+            background-color: #f0e6dd;
+            color: #8b4513;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .sem-receitas {
+            text-align: center;
+            grid-column: 1 / -1;
+            color: #666;
+        }
+
+        /* Estilos do Modal de ingredientes*/
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: var(--bg-light);
+            margin: 5% auto;
+            padding: 25px;
+            border-radius: 10px;
+            width: 60%;
+            max-width: 700px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        .close-modal:hover {
+            color: var(--secondary);
+        }
+
+        .modal-body {
+            margin-top: 20px;
+        }
+
+        .modal-body h3 {
+            color: var(--secondary);
+            margin: 15px 0 10px;
+        }
+
+        #modal-ingredientes-lista {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        #modal-ingredientes-lista li {
+            margin-bottom: 8px;
+        }
+
+        #modal-preparo {
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        /* Estilos para os botões */
+        .btn-add-receita {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .btn-add-receita:hover {
+            transform: scale(1.1);
+            background-color: #e67e65;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            gap: 10px;
+        }
+
+        .btn-action {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .btn-action:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .card-icone-categoria {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 2; /* Garante que fique acima da imagem */
+        }
+        .card-imagem {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            position: relative; /* Adicionado para posicionamento absoluto do ícone */
+            display: flex; /* Adicionado para centralização */
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
+        }
+
+.card-receita {
+    position: relative; /* Adicione esta linha */
+}
+        @media (max-width: 768px) {
+            .receitas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 90%;
+                margin: 10% auto;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+
+        
+        
+/* Estilos do modal do form receitas*/
+
+/* Estilo base do modal */
+.receitaModal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.menu {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    flex-grow: 1;
+/* Conteúdo do modal */
+.receitaModal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: modalFadeIn 0.3s;
 }
 
-.menu a {
-    width: 100%;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 22px;
-    text-decoration: none;
-    color: var(--text-dark);
-    background-color: var(--bg-card);
-    border-radius: 12px;
-    transition: all 0.3s ease;
+/* Animação de entrada */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.menu a:hover,
-.menu a.active {
-    cursor: pointer;
-    background-color: var(--secondary);
-    transform: scale(1.1);
-}
-
-.profile {
-  text-align: center;
-  margin-top: 30px;
-  cursor: pointer;
-}
-
-
-.profile img {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-}
-
-.profile p {
-    margin-top: 6px;
-    font-size: 13px;
-    color: var(--text-dark);
-}
-
-.content {
-    flex: 1;
-    padding: 30px;
-}
-
-.header {
+/* Cabeçalho do modal */
+.receitaModal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
     margin-bottom: 20px;
 }
 
-.header h1 {
-    color: var(--text-dark);
+.receitaModal-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
 }
 
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.card {
-    width: 250px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    padding: 10px;
-    position: relative;
-}
-
-.card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.card .info {
-    margin-top: 10px;
-}
-
-.card .info h2 {
-    font-size: 16px;
-}
-
-.card .info span {
+/* Botão de fechar */
+.close-receitaModal {
+    color: #aaa;
+    font-size: 28px;
     font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
 }
 
-.card .info p {
-    font-size: 14px;
+.close-receitaModal:hover {
+    color: #333;
+}
+
+/* Corpo do modal */
+.receitaModal-body {
+    padding: 10px 0;
+}
+
+/* Estilos para os formulários */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
     color: #555;
-    margin: 5px 0;
 }
 
-.card .details {
-    margin-top: 10px;
-    background: var(--secondary);
-    color: white;
-    padding: 8px;
+.form-control {
     width: 100%;
-    border: none;
-    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* Seção de ingredientes */
+#ingredientesContainer {
+    margin-bottom: 15px;
+}
+
+.ingrediente-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    transition: all 0.2s;
+}
+
+.ingrediente-item:hover {
+    background-color: #f5f5f5;
+}
+
+/* Botões */
+.btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
     cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
 }
 
-.card .top-right {
-    position: absolute;
-    top: 8px;
-    right: 8px;
+.btn-outline-primary {
+    color: #4a90e2;
+    border-color: #4a90e2;
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.btn-outline-danger {
+    color: #e74c3c;
+    border-color: #e74c3c;
+    background-color: transparent;
+}
+
+.btn-outline-danger:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-primary {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3a7bc8;
+}
+
+/* Rodapé do modal */
+.modal-footer {
     display: flex;
-    gap: 5px;
-}
-
-.card .top-right button {
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.actions {
-    display: flex;
+    justify-content: flex-end;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    margin-top: 20px;
     gap: 10px;
 }
 
-button {
-    cursor: pointer;
+/* Responsividade */
+@media (max-width: 768px) {
+    .receitaModal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+    
+    .ingrediente-item .row > div {
+        margin-bottom: 10px;
+    }
+    
+    .remover-ingrediente {
+        margin-top: 0;
+    }
 }
 
-/* MODAL */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
+/* Efeito de hover nos selects */
+.ingrediente-select:hover {
+    border-color: #bbb;
 }
 
-.modal-content {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
+/* Estilo para quando um campo é inválido */
+.form-control:invalid {
+    border-color: #e74c3c;
 }
 
-.modal-content input,
-.modal-content textarea {
-    width: 100%;
-    margin: 10px 0;
-    padding: 8px;
+/* Espaçamento entre linhas de ingredientes */
+.ingrediente-item + .ingrediente-item {
+    margin-top: 10px;
 }
+
+
+
+        

@@ -24,7 +24,7 @@
                 <a href="../Telas/materiais.html" title="Materiais">🧂</a>
                 <a href="../Telas/receitas.html" title="Receitas">📖</a>
                 <a href="../Telas/financeiro.html" title="Financeiro">💰</a>
-                <a class="active" href="../Telas/estoque.html" title="Estoque">📦</a>
+                <a href="estoque.html" title="Estoque">📦</a>
             </nav>
 
             <a href="../Telas/perfil.html" class="profile-link">
@@ -40,9 +40,125 @@
                 <h1>Estoque</h1>
             </header>
 
-
             <h1>Controle de Estoque</h1>
-            <button class="new-btn">Adicionar item</button>
+
+            <button id="openModalBtn" class="new-btn">Adicionar item</button>
+
+            <div id="modalForm" class="modal">
+                <div class="modal-content">
+                <span class="close">&times;</span>
+
+                <h2>Formulário</h2>
+
+            <form id="itemForm">
+                      <!-- Dados Básicos do Item -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="nome_item" class="required">Nome do Item</label>
+                    <input type="text" id="nome_item" name="nome_item" required>
+                    <div class="error-message" id="nome_item_error">Por favor, insira o nome do item</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="categoria" class="required">Categoria</label>
+                    <select id="categoria" name="categoria" required>
+                        <option value="">Selecione...</option>
+                        <option value="ingrediente">Ingrediente</option>
+                        <option value="embalagem">Embalagem</option>
+                        <option value="produto final">Produto Final</option>
+                        <option value="material de limpeza">Material de Limpeza</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                    <div class="error-message" id="categoria_error">Por favor, selecione uma categoria</div>
+                </div>
+            </div>
+            
+            <!-- Quantidade e Unidade de Medida -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="quantidade" class="required">Quantidade</label>
+                    <input type="number" id="quantidade" name="quantidade" step="0.001" min="0" required>
+                    <div class="error-message" id="quantidade_error">Por favor, insira uma quantidade válida</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="unidade_medida" class="required">Unidade de Medida</label>
+                    <select id="unidade_medida" name="unidade_medida" required>
+                        <option value="">Selecione...</option>
+                        <option value="kg">Quilograma (kg)</option>
+                        <option value="g">Grama (g)</option>
+                        <option value="L">Litro (L)</option>
+                        <option value="ml">Mililitro (ml)</option>
+                        <option value="un">Unidades</option>
+                        <option value="cx">Caixas</option>
+                        <option value="pct">Pacotes</option>
+                    </select>
+                    <div class="error-message" id="unidade_medida_error">Por favor, selecione uma unidade de medida</div>
+                </div>
+            </div>
+            
+            <!-- Valor e Data de Validade -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="valor_unitario" class="required">Valor Unitário (R$)</label>
+                    <input type="number" id="valor_unitario" name="valor_unitario" step="0.01" min="0" required>
+                    <div class="error-message" id="valor_unitario_error">Por favor, insira um valor válido</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="data_validade">Data de Validade</label>
+                    <input type="date" id="data_validade" name="data_validade">
+                </div>
+            </div>
+            
+            <!-- Fornecedor e Local de Armazenamento -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="fornecedor">Fornecedor</label>
+                    <input type="text" id="fornecedor" name="fornecedor">
+                </div>
+                
+                <div class="form-group">
+                    <label for="local_armazenamento">Local de Armazenamento</label>
+                    <select id="local_armazenamento" name="local_armazenamento">
+                        <option value="">Selecione...</option>
+                        <option value="geladeira">Geladeira</option>
+                        <option value="freezer">Freezer</option>
+                        <option value="armário">Armário</option>
+                        <option value="estoque seco">Estoque Seco</option>
+                        <option value="estoque refrigerado">Estoque Refrigerado</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Estoque Mínimo e Status -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="minimo_estoque">Estoque Mínimo</label>
+                    <input type="number" id="minimo_estoque" name="minimo_estoque" step="0.001" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="ativo">Status</label>
+                    <select id="ativo" name="ativo">
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Observações -->
+            <div class="form-group">
+                <label for="observacoes">Observações</label>
+                <textarea id="observacoes" name="observacoes"></textarea>
+            </div>
+            
+            <button type="submit" class="new-btn">Cadastrar Item</button>
+                    </form>
+                </div>
+            </div>
+
             <div id="loading">Carregando estoque...</div>
             <table id="tabela-estoque">
                 <thead>

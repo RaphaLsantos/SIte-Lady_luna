@@ -1,6 +1,7 @@
 import { Router } from "express";
 import EstoqueController from "./app/controllers/EstoqueController.js";
 import ReceitaController from "./app/controllers/ReceitaController.js";
+import materiaisController from "./app/controllers/materiaisController.js";
 
 const router = Router()
 
@@ -19,5 +20,12 @@ router.put('/receita/:id', ReceitaController.update)
 router.delete('/receita/:id', ReceitaController.delete)
 
 router.get('/ingredientes/:id', ReceitaController.showItemReceita)
+
+//rota para materiais
+router.get('/materiais', materiaisController.index)
+router.get('/materiais/:id', materiaisController.show)
+router.post('/materiais', materiaisController.store)
+router.put('/materiais/:id', materiaisController.update)
+router.delete('/materiais/:id', materiaisController.delete)
 
 export default router;

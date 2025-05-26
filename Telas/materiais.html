@@ -58,14 +58,47 @@
         </div>
     </div>
 
-    <!-- Modal Adicionar Material -->
+    <!-- Modal Adicionar Material (Atualizado) -->
     <div class="modal" id="addModal">
         <div class="modal-content">
             <h2>Adicionar Material</h2>
-            <input type="text" id="newName" placeholder="Nome do Material" />
-            <textarea id="newDetails" placeholder="Detalhes, unidade de medida, etc..."></textarea>
-            <button onclick="addMaterial()">Adicionar</button>
-            <button onclick="closeModal('addModal')">Cancelar</button>
+            <form id="formAddMaterial">
+
+                <input type="text" id="nome" placeholder="Nome do Material*" required />
+
+                <textarea id="descricao" placeholder="Descrição"></textarea>
+
+                <input type="number" id="quantidade" placeholder="Quantidade*" step="0.001" required />
+
+                <select id="unidade_medida" required>
+                    <option value="">Unidade de Medida*</option>
+                    <option value="kg">Quilograma (kg)</option>
+                    <option value="g">Grama (g)</option>
+                    <option value="L">Litro (L)</option>
+                    <option value="ml">Mililitro (ml)</option>
+                    <option value="unidade">Unidade (un)</option>
+                    <option value="m">Metro (m)</option>
+                    <option value="cm">Centímetro (cm)</option>
+                </select>
+
+                <input type="number" id="valor_unitario" placeholder="Valor Unitário (R$)*" step="0.01" required />
+
+                <input type="text" id="fornecedor" placeholder="Fornecedor" />
+
+                <textarea id="observacoes" placeholder="Observações"></textarea>
+
+                <div style="margin-top: 10px;">
+                    <label>
+                        <input type="checkbox" id="ativo" checked />
+                        Ativo
+                    </label>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="submit">Adicionar</button>
+                    <button type="button" onclick="closeModal('addModal')">Cancelar</button>
+                </div>
+            </form>
         </div>
     </div>
 

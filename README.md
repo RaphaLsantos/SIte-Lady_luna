@@ -185,9 +185,6 @@ Sinta-se à vontade para contribuir com melhorias, correções de bugs ou novas 
 
 Este projeto está licenciado sob a licença ISC. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## Autor
-
-Lucas Matos Dias (conforme `package.json` do backend)
 
 ---
 
